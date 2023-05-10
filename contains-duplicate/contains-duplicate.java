@@ -6,14 +6,10 @@ class Solution {
         for(int i = 0; i < nums.length; i++){
             set.add(nums[i]);
         }
-
-        int size = set.size();
-
-        if(size == nums.length){
+        if(set.size() == nums.length){
             return false;
         }
-
-
+        
         return true;
     }
 }
