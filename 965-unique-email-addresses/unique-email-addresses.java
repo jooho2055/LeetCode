@@ -1,14 +1,11 @@
 class Solution {
     public int numUniqueEmails(String[] emails) {
-        Set<String> Eset = new HashSet<>();
-
-        for (int i = 0; i < emails.length; i++){
-            String[] splitString = emails[i].split("@");
-            splitString[0] = splitString[0].split("\\+")[0].replace(".", "");
-            String a = splitString[0] + "@" + splitString[1];
-            Eset.add(a);
-        }
-
-        return Eset.size();
+        Set<String> set = new HashSet<>();
+	for(String addr : emails) {
+		String[] parts = addr.split("@");
+		parts[0] = parts[0].replaceAll("\\.", "");
+		set.add(parts[0].split("\\+")[0]+"@"+parts[1]);
+	}
+	return set.size();
     }
 }
