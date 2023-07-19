@@ -4,8 +4,7 @@ class Solution {
 
         for (int i = 0; i < emails.length; i++){
             String[] splitString = emails[i].split("@");
-            splitString[0] = splitString[0].split("\\+")[0];
-            splitString[0] = splitString[0].replace(".", "");
+            splitString[0] = splitString[0].split("\\+")[0].replace(".", "");
             String a = splitString[0] + "@" + splitString[1];
 
             Emap.put(a, Emap.getOrDefault(a, 0) + 1);
