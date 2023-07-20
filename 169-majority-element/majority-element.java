@@ -1,5 +1,8 @@
 class Solution {
     public int majorityElement(int[] nums) {
+
+        //Boyer-Moore Majority Vote Algorithm
+
         int count=0;
         int element=0;
 
