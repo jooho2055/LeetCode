@@ -11,6 +11,7 @@ class Solution {
 
             if(Mmap.get(num) >= count){
                 majority = num;
+                break;
             }
         }
 
