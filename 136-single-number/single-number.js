@@ -14,14 +14,13 @@ var singleNumber = function(nums) {
         }
     }
 
-    let result = 0;
+    
 
     for (const [key, value] of Tmap) {
         if(value == 1){
-            result = key;
-            break;
+            return key;
         }
     }
 
-    return result;
+    
 };
