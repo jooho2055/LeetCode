@@ -4,17 +4,17 @@
  */
 var productExceptSelf = function(nums) {
     let output = [];
-    let prefix = 1;
-    let postfix = 1;
+    let prePostfix = 1;
+    
     for (let i=nums.length - 1; i >= 0; i--) {
-        output[i] = postfix;
-        postfix *= nums[i];
-
-
+        output[i] = prePostfix;
+        prePostfix *= nums[i];
     }
+
+    prePostfix = 1;
     for (let j=0; j < nums.length; j++) {
-        output[j] *= prefix;
-        prefix *= nums[j];
+        output[j] *= prePostfix;
+        prePostfix *= nums[j];
     }
     return output;
 };
