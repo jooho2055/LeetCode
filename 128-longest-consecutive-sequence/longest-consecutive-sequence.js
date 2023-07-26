@@ -3,6 +3,10 @@
  * @return {number}
  */
 var longestConsecutive = function(nums) {
+
+    if(nums.length == 0){
+        return 0;
+    } 
     const set = new Set(nums);
     let longest = 0;
 
