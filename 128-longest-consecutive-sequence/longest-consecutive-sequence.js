@@ -4,7 +4,7 @@
  */
 var longestConsecutive = function(nums) {
 
-    if(nums.length == 0){
+    if(!nums.length){
         return 0;
     } 
     const set = new Set(nums);
