@@ -4,16 +4,14 @@
  */
 var isPalindrome = function(s) {
 
-    let replaced = s.replace(/[^a-z0-9]/gi, '');
-    replaced = replaced.replaceAll(' ', '').toLowerCase();
-    
+    s = s.toLowerCase().replace(/[^a-z0-9]/gi, '');
 
     let startLeft = 0;
-    let startRight = replaced.length - 1;
+    let startRight = s.length - 1;
 
      while (startLeft < startRight) {
         
-        if(replaced.charAt(startLeft) === replaced.charAt(startRight)){
+        if(s.charAt(startLeft) === s.charAt(startRight)){
             startLeft++;
             startRight--;
         } else {
