@@ -4,28 +4,18 @@
  */
 var maxProfit = function(prices) {
     let maxProfit = 0;
-    let currentPrice = prices[0];
+    let left = 0;
+    let right = 1;
 
-    for(let i = 0; i < prices.length - 1; i++){
-        let p = i+1;
-
-        if(prices[i] <= currentPrice){
-            currentPrice = prices[i];
+    while(right < prices.length){
+        if(prices[left] < prices[right]){
+            maxProfit = Math.max(maxProfit, prices[right] - prices[left]);
+            right++;
         } else{
-            continue;
+            left = right;
+            right++;
         }
-
-        while(p <prices.length){
-            if(prices[p] < prices[i]){
-                p++;
-            } else{
-                if(prices[p]-prices[i] > maxProfit){
-                    maxProfit = prices[p] - prices[i];
-                }
-                p++;
-            }
-        }
-
+        
     }
 
     return maxProfit;
