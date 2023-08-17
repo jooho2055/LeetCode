@@ -4,7 +4,7 @@
  * @return {string}
  */
 var restoreString = function(s, indices) {
-    let array = new Array(s.length).fill('a');
+    let array = new Array(s.length);
 
     for(let i = 0; i < s.length; i++){
         array[indices[i]] = s[i];
