@@ -43,5 +43,6 @@ var isValid = function(s) {
     if(stack.length != 0){
         return false;
     }
+    
     return true;
 };
