@@ -4,15 +4,14 @@
  */
 var containsDuplicate = function(nums) {
     
-    const map = new Map();
+    const set = new Set();
 
-    for(let i = 0; i <= nums.length; i++){
+    for(const num of nums){
 
-        if(!map.has(nums[i])){
-            map.set(nums[i],1)
-        } else {
+        if(set.has(num)){
             return true;
         }
+        set.add(num)
     }
 
     return false;
