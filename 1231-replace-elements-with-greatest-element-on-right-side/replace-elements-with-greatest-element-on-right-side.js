@@ -8,21 +8,17 @@ var replaceElements = function(arr) {
         return [-1]
     }
 
-    for(let i = 0; i < arr.length; i++){
-        let max = arr[i + 1];
-        let j = i + 2;
+    let initialMax = -1;
 
-        while( j < arr.length){
-            if(max < arr[j]){
-                max = arr[j];
-            }
-            j++;
-        }
+    for(let i = arr.length - 1; i >= 0 ; i--){
+        
+        let newMax = Math.max(initialMax, arr[i])
 
-        arr[i] = max;
+        arr[i] = initialMax;
+
+        initialMax = newMax;
+        
     }
-
-    arr[arr.length - 1] = -1;
 
     return arr
 };
