@@ -4,11 +4,11 @@
  */
 var getConcatenation = function(nums) {
     
-    numsLength = nums.length
+    ans = [];
 
-    for(let i = 0; i < numsLength; i++){
-        nums.push(nums[i]);
+    for(let i = 0; i < nums.length; i++){
+        ans[i] = ans[i+nums.length] = nums[i];
     }
-
-    return nums
+    
+    return ans
 };
