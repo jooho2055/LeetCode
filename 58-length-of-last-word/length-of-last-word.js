@@ -4,14 +4,17 @@
  */
 var lengthOfLastWord = function(s) {
     
-    const arr = s.split(' ');
+    let i = s.length - 1;
+    let length = 0;
 
-    for(let i = arr.length -1; i >= 0; i--){
-        if(arr[i] === ''){
-            continue;
-        } 
-
-        return arr[i].length;
+    while(s.charAt(i) == ' '){
+        i -= 1;
     }
 
+    while(i >= 0 && s.charAt(i) !== ' '){
+        length += 1;
+        i -= 1;
+    }
+    
+    return length
 };
