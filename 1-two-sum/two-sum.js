@@ -14,7 +14,7 @@ var twoSum = function(nums, target) {
         if(map.has(k)){
             return [i, map.get(k)]
         }else{
-            map.set(nums[i], nums.indexOf(nums[i]))
+            map.set(nums[i], i)
         }
     }
 };
