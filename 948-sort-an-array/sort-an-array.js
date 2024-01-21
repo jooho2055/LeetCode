@@ -37,21 +37,19 @@ var sortArray = function(nums) {
         k++;
     }
 
-    if(i !== left.length){
-        while(i < left.length){
-            result.push(left[i]);
-            i++;
-            k++;
-        }
+    
+    while(i < left.length){
+        result.push(left[i]);
+        i++;
     }
+    
 
-    if(j !== right.length){
-        while(j < right.length){
-            result.push(right[j]);
-            j++;
-            k++;
-        }
+    
+    while(j < right.length){
+        result.push(right[j]);
+        j++;
     }
+    
      
     return result
 }
