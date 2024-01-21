@@ -27,7 +27,7 @@ var sortArray = function(nums) {
     let k = 0;
 
     while(i < left.length && j < right.length){
-        if(left[i] > right[j]){
+        if(left[i] >= right[j]){
             result.push(right[j]);
             j++;
         } else {
