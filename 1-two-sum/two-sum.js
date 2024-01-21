@@ -5,16 +5,16 @@
  */
 var twoSum = function(nums, target) {
     
-    for (let i = 0; i < nums.length; i++){
+    const map = new Map();
 
-        let j = i + 1;
+    for(let i = 0; i < nums.length; i++){
+        
+        const k = target - nums[i];
 
-        while (j <= nums.length){
-            if(nums[i] + nums[j] === target){
-                return [i,j];
-            }
-            
-            j++;
+        if(map.has(k)){
+            return [i, map.get(k)]
+        }else{
+            map.set(nums[i], nums.indexOf(nums[i]))
         }
     }
 };
