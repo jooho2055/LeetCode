@@ -3,18 +3,33 @@
  * @return {number[]}
  */
 var productExceptSelf = function(nums) {
-    let output = [];
-    let prePostfix = 1;
     
-    for (let i=nums.length - 1; i >= 0; i--) {
-        output[i] = prePostfix;
-        prePostfix *= nums[i];
+    let count = 0;
+    let total = 1;
+
+    for(let i = 0; i < nums.length; i++){
+        if(nums[i] === 0){
+            count++;
+            continue; 
+        }
+        total = total * nums[i]; 
     }
 
-    prePostfix = 1;
-    for (let j=0; j < nums.length; j++) {
-        output[j] *= prePostfix;
-        prePostfix *= nums[j];
+    if(count >= 2){
+        return new Array(nums.length).fill(0)
     }
-    return output;
+
+    const result = [];
+    for(let i = 0; i < nums.length; i++){
+        result.push( total / nums[i]);
+
+        if(count === 1 && nums[i] !== 0){
+            result[i] = 0;
+        } 
+        if (nums[i]===0){
+            result[i] = total;
+        }
+    }
+
+    return result
 };
