@@ -31,17 +31,7 @@ var topKFrequent = function(nums, k) {
             right--;
             continue;
         } else{
-            if(count[right].length === 1){
-                result.push(count[right][0])
-            } else{
-                for(let i = 0; i < count[right].length; i++){
-                    if(result.length === k){
-                        break;
-                    }
-                    result.push(count[right][i])
-                }
-            }
-
+            result.push(...count[right])
             right--;
         }
 
