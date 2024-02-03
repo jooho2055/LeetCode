@@ -4,32 +4,21 @@
  */
 var productExceptSelf = function(nums) {
     
-    let count = 0;
-    let total = 1;
-
-    for(let i = 0; i < nums.length; i++){
-        if(nums[i] === 0){
-            count++;
-            continue; 
-        }
-        total = total * nums[i]; 
-    }
-
-    if(count >= 2){
-        return new Array(nums.length).fill(0)
-    }
-
     const result = [];
-    for(let i = 0; i < nums.length; i++){
-        result.push( total / nums[i]);
-
-        if(count === 1 && nums[i] !== 0){
-            result[i] = 0;
-        } 
-        if (nums[i]===0){
-            result[i] = total;
-        }
+    
+    let prefix = 1;
+    let suffix = 1;
+    
+    for( let i = 0; i < nums.length; i++){
+        result[i] = prefix;
+        prefix *= nums[i];
     }
+    
+    for( let j = nums.length - 1; j >= 0 ; j--){
+        result[j] = result[j] * suffix;
+        suffix = suffix * nums[j];
+    }
+    
 
     return result
 };
