@@ -8,17 +8,19 @@ var twoSum = function(numbers, target) {
     let left = 0;
     let right = numbers.length - 1;
 
-    while( numbers[left] + numbers[right] !== target ){
+    while( left < right ){
 
-        let sum = numbers[left] + numbers[right];
+        const sum = numbers[left] + numbers[right];
 
         if(sum < target){
             left++;
         }
-        if( sum > target ){
+        else if( sum > target ){
             right--;
+        }
+        else if (sum === target) {
+            return [left + 1, right + 1]
         }
     }
 
-    return [left + 1, right + 1]
 };
