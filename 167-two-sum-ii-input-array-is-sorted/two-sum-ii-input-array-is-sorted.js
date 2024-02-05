@@ -4,18 +4,21 @@
  * @return {number[]}
  */
 var twoSum = function(numbers, target) {
-
-    let pointerOne = 0;
-    let pointerTwo = numbers.length - 1;
-
     
-    while(pointerOne < pointerTwo){
-        if((numbers[pointerOne] + numbers[pointerTwo]) === target){
-            return [pointerOne + 1, pointerTwo + 1];
-        } else if(target < (numbers[pointerOne] + numbers[pointerTwo])){
-            pointerTwo--;
-        } else{
-            pointerOne++;
+    let left = 0;
+    let right = numbers.length - 1;
+
+    while( numbers[left] + numbers[right] !== target ){
+
+        let sum = numbers[left] + numbers[right];
+
+        if(sum < target){
+            left++;
+        }
+        if( sum > target ){
+            right--;
         }
     }
+
+    return [left + 1, right + 1]
 };
