@@ -3,51 +3,34 @@
  * @return {number[][]}
  */
 var threeSum = function(nums) {
-    const result = [];
-    nums.sort((a,b)=>(a-b))
-    let sum = 0;
-    let target = 0;
-
-    if(nums.length < 3){
-        return [];
-    } 
-
-    for(let i = 0; i < nums.length -2; i++){
     
-        if (i > 0 && nums[i] == nums[i - 1]) {
-			continue;
-		}
+    nums.sort((a, b) => a - b);
 
-        let pointerOne = i + 1;
-        let pointerTwo = nums.length - 1;
+    const result = [];
 
-        while(pointerOne < pointerTwo){
+    for(let i = 0; i < nums.length - 2; i++){
+        if(i !== 0 && (nums[i] === nums[i-1])){
+            continue;
+        }
+        let left = i + 1;
+        let right = nums.length - 1;
+        
+        while( left < right ){
+            const sum  = nums[i] + nums[left] + nums[right];
 
-            sum = nums[i] + nums[pointerOne] + nums[pointerTwo];
-
-            if(target === sum){
-                
-                result.push([nums[i],nums[pointerOne],nums[pointerTwo]]);
-                pointerOne++;
-                pointerTwo--;
-
-                while (nums[pointerOne] === nums[pointerOne - 1] && 
-                pointerOne < pointerTwo){
-                     pointerOne++;
+            if(sum > 0){
+                right--;
+            } else if(sum < 0){
+                left++;
+            } else{
+                result.push([nums[i],nums[left],nums[right]]);
+                left++;
+                while(nums[left] === nums[left-1] && left < right){
+                    left++;
                 }
-				while (nums[pointerTwo] === nums[pointerTwo + 1] &&
-                pointerOne < pointerTwo) {
-                    pointerTwo--;
-                }
-            
-            } else if(sum > target){
-                pointerTwo--;
-            } else {
-                pointerOne++;
             }
-        }   
+        }
     }
 
-    return result;
-
+    return result
 };
