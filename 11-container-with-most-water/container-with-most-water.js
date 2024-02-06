@@ -4,24 +4,22 @@
  */
 var maxArea = function(height) {
     
-    let pOne = 0;
-    let pTwo = height.length - 1;
-    let result = 0;
+    let left = 0;
+    let right = height.length - 1;
+    let max = 0;
 
-    while(pOne < pTwo){
+    while(left < right){
+        let minHeight = Math.min(height[left], height[right]);
+        let width = right - left;
 
-        let temp = (pTwo - pOne) * Math.min(height[pOne], height[pTwo]);
+        max = Math.max(max, minHeight * width);
 
-        if(temp > result){
-            result = temp;
-        }
-
-        if(height[pOne] < height[pTwo]){
-            pOne++;
+        if(height[right] > height[left]){
+            left++;
         } else{
-            pTwo--;
+            right--;
         }
     }
 
-    return result;
+    return max
 };
