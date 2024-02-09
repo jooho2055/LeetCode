@@ -6,27 +6,20 @@ var lengthOfLongestSubstring = function(s) {
     
     let result = 0;
     let left = 0;
-    let right = left;
 
-    const mySet = new Set();
+    const mySet = new Set ();
 
-    while(left <= s.length - 1){
+    for(let right = 0; right < s.length; right++){
 
-        if(!mySet.has(s[right])){
-            mySet.add(s[right]);
-            right++;
-            result = Math.max(result, mySet.size);
-        } else{
-            mySet.clear();
+        while(mySet.has(s[right])){
+            mySet.delete(s[left]);
             left++;
-            right = left;
         }
 
-        if(right === s.length){
-            left++;
-            right = left
-        }
+        mySet.add(s[right]);
+        result = Math.max(result, mySet.size);
+    
     }
-
+    
     return result
 };
