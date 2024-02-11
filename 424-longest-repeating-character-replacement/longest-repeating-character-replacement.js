@@ -4,40 +4,26 @@
  * @return {number}
  */
 var characterReplacement = function(s, k) {
-    
-    let winStart = 0;
-    let winEnd = 0;
-    let maxWinSize = 0;
-    let maxValueInMap = 1;          
-    const map = new Map();
+    let left = 0;
+    let right = 0;
+    let mostFreq = 0;
+    let result = 0;
 
-    while(winEnd < s.length){
+    const freqMap = new Map();
 
-        let currentWinSize = winEnd - winStart + 1;
+    while(right < s.length){
+        freqMap.set(s[right], (freqMap.get(s[right]) || 0) + 1);
 
-        if(currentWinSize < maxWinSize){
-            winEnd++;
-            continue;
+        mostFreq = Math.max(...freqMap.values());
+
+        while(right - left + 1 - mostFreq > k){
+            freqMap.set(s[left], freqMap.get(s[left]) - 1);
+            left++;
         }
 
-        if(map.has(s[winEnd])){
-            map.set(s[winEnd], map.get(s[winEnd]) + 1);
-        } else{
-            map.set(s[winEnd], 1)
-        }
-
-        maxValueInMap = Math.max(...map.values());
-
-
-        if(currentWinSize - maxValueInMap > k){
-           map.set(s[winStart], map.get(s[winStart]) - 1)
-            winStart++;
-        }
-
-        currentWinSize = winEnd - winStart + 1;
-        maxWinSize = Math.max(currentWinSize, maxWinSize);
-        winEnd++;
+        result = Math.max(result, right - left + 1);
+        right++;
     }
 
-    return maxWinSize;
+    return result;
 };
