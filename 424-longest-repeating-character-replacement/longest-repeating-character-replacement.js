@@ -14,7 +14,7 @@ var characterReplacement = function(s, k) {
     while(right < s.length){
         freqMap.set(s[right], (freqMap.get(s[right]) || 0) + 1);
 
-        mostFreq = Math.max(...freqMap.values());
+        mostFreq = Math.max(mostFreq, freqMap.get(s[right]));
 
         while(right - left + 1 - mostFreq > k){
             freqMap.set(s[left], freqMap.get(s[left]) - 1);
